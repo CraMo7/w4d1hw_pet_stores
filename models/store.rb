@@ -1,6 +1,9 @@
 require("pg")
 
 class Store
+
+  attr_reader(:name, :address, :category)
+
   def initialize(args)
     @name = args["name"]
     @address = args["address"]
