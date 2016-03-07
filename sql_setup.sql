@@ -12,6 +12,6 @@ CREATE TABLE pets (
   species VARCHAR (255), 
   breed VARCHAR(255),
   age INT2,
-  store_id REFERENCES stores(id)
+  store INT4 REFERENCES stores(id)
 );
 SELECT * FROM pets;
