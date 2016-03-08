@@ -39,7 +39,7 @@ get("/pets/:id/edit") do
 end
 
 # => UPDATE
-put("/pets/:id") do
+post("/pets/:id") do
   @pet = Pet.new(params)
   @pet.update()
   erb(:layout_pet) {erb(:"pet_views/update")}
