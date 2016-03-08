@@ -1,0 +1,15 @@
+body {
+  background-image: url(/whycantibepretty.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #456789;
+}
+ul {
+  list-style: none;
+}
+a {
+  color: #0090A8;
+}
+input {
+  margin: 2px 6px 2px 2px;
+}

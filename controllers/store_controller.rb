@@ -15,36 +15,38 @@ end
 
 # => NEW
 get("/stores/new") do
-
   erb(:layout_pet) {erb(:"store_views/new")}
 end
 
 # => CREATE
 post("/stores") do
-
+  @store = Store.new(params)
+  @store.create()
   erb(:layout_pet) {erb(:"store_views/create")}
 end
 
 # => SHOW
 get("/stores/:id") do
-
+  @store = Store.show(:id)
   erb(:layout_pet) {erb(:"store_views/show")}
 end
 
 # => EDIT
 get("/stores/:id/edit") do
-
+  @store = Store.new(Store.show(:id))
   erb(:layout_pet) {erb(:"store_views/edit")}
 end
 
 # => UPDATE
 put("/stores/:id") do
-
+  @store = Store.new(params)
+  @store.update()
   erb(:layout_pet) {erb(:"store_views/update")}
 end
 
 # => DESTROY
 delete("/stores/:id/delete") do
-
+  @store = Store.new(params)
+  @store.destroy
   erb(:layout_pet) {erb(:"store_views/destroy")}
 end
