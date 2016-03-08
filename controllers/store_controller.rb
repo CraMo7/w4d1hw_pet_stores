@@ -1,4 +1,3 @@
-require("pg")
 require_relative("../models/store.rb")
 
 # => redirects
@@ -10,43 +9,44 @@ get("/stores/:id/edit/") {redirect(to("/stores/:id/edit"))}
 # => INDEX
 get("/stores") do
   @stores_index_array = Store.index()
-  erb(:layout_pet) {erb(:"store_views/index")}
+  erb(:layout_store) {erb(:"store_views/index")}
 end
 
 # => NEW
 get("/stores/new") do
-  erb(:layout_pet) {erb(:"store_views/new")}
+  erb(:layout_store) {erb(:"store_views/new")}
 end
 
 # => CREATE
 post("/stores") do
   @store = Store.new(params)
   @store.create()
-  erb(:layout_pet) {erb(:"store_views/create")}
+  erb(:layout_store) {erb(:"store_views/create")}
 end
 
 # => SHOW
 get("/stores/:id") do
-  @store = Store.show(:id)
-  erb(:layout_pet) {erb(:"store_views/show")}
+  store_hash = Store.show(:id)
+  @store = Store.new(store_hash)
+  erb(:layout_store) {erb(:"store_views/show")}
 end
 
 # => EDIT
 get("/stores/:id/edit") do
   @store = Store.new(Store.show(:id))
-  erb(:layout_pet) {erb(:"store_views/edit")}
+  erb(:layout_store) {erb(:"store_views/edit")}
 end
 
 # => UPDATE
-put("/stores/:id") do
+post("/stores/:id") do
   @store = Store.new(params)
-  @store.update()
-  erb(:layout_pet) {erb(:"store_views/update")}
+  Store.update(params)
+  erb(:layout_store) {erb(:"store_views/update")}
 end
 
 # => DESTROY
 delete("/stores/:id/delete") do
   @store = Store.new(params)
   @store.destroy
-  erb(:layout_pet) {erb(:"store_views/destroy")}
+  erb(:layout_store) {erb(:"store_views/destroy")}
 end

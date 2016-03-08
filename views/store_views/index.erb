@@ -1,7 +1,7 @@
 <h4>All stores:</h4>
 <% @stores_index_array.each do |store| %>
 <p>Name: </p>
-<%= store.name %>
+<a href="/stores/<%= store.id %>"><%= store.name %></a>
 <p>Address: </p>
 <%= store.address %>
 <p>Store Type: </p>

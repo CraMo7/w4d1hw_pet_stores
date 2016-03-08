@@ -2,7 +2,7 @@ require("pg")
 
 class Store
 
-  attr_reader(:name, :address, :category)
+  attr_reader(:name, :address, :category, :id)
 
   def initialize(args)
     @name = args["name"]
@@ -21,7 +21,11 @@ class Store
 
   # => CREATE
   def create()
-    sql = "INSERT INTO stores VALUES(
+    sql = "INSERT INTO stores (
+      name,
+      address,
+      category)
+      VALUES(
       '#{@name}',
       '#{@address}',
       '#{@category}');"
@@ -32,15 +36,17 @@ class Store
   # => SHOW
   def self.show(id)
     sql = "SELECT * FROM stores WHERE id=#{id};"
-    store_hash_returned = Store.db(sql)
-    return store_hash_returned
+    store_collection_returned = Store.db(sql)
+    store_hash = store_collection_returned[0]
+    return store_hash
   end
 
   # => UPDATE
-  def update(args)
+  def self.update(args)
     @name = args["name"]
     @address = args["address"]
     @category = args["category"]
+    @id = args["id"]
     sql = "UPDATE stores SET name='#{@name}', address='#{@address}', category='#{@category}' WHERE id = '#{@id}';"
     sql_return = Store.db(sql)
     return sql_return
@@ -48,7 +54,7 @@ class Store
 
   # => DESTROY
   def destroy(id)
-    sql = "DELETE FROM stores WHERE id='#{id}'"
+    sql = "DELETE FROM stores WHERE id=#{id};"
     sql_return = Store.db(sql)
     return sql_return    
   end
