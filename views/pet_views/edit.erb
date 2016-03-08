@@ -1,0 +1,11 @@
+<h4>Update this pet</h4>
+
+<form action="/pets/<%= @id %>" method="put">
+  <label for="name">Name:</label><input type="text" name="name">
+  <label for="species">Species:</label><input type="text" name="species">
+  <label for="breed">Breed:</label><input type="text" name="breed">
+  <label for="age">Age:</label><input type="text" name="age">
+  <label for="store">Store (id number):</label><input type="text" name="store">
+  <!-- add ability to link to store by store name in future -->
+  <input type="submit" class="button">
+</form>

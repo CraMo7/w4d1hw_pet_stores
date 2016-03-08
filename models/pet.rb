@@ -1,6 +1,9 @@
 require("pg")
 
 class Pet
+
+  attr_reader(:name, :species, :breed, :age, :store)
+
   def initialize(args)
     @name = args["name"]
     @species = args["species"]
@@ -9,6 +12,9 @@ class Pet
     @store = args["store"]
   end
   
+  
+  
+
   private
 
   def self.db(sql)

@@ -1,0 +1,10 @@
+<h4>All stores:</h4>
+<% @stores_index_array.each do |store| %>
+<p>Name: </p>
+<%= store.name %>
+<p>Address: </p>
+<%= store.address %>
+<p>Store Type: </p>
+<%= store.category %>
+<hr>
+<% end %>
